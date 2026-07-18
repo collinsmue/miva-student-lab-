@@ -1,24 +1,8 @@
-/* =========================================================
-   contact.js  -  COS106 Web Technologies Practical
-   Contact form validation - ALL validation logic lives here.
-   Rules:
-     - No field may be empty
-     - Email must match a standard pattern
-     - Phone must contain only digits (7-15 digits)
-     - Inline error messages shown next to each field
-     - Submission is prevented when any field is invalid
-     - A success message is shown after valid submission
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* --------------------------------------------------
-     DOM REFERENCES
-  -------------------------------------------------- */
   const form       = document.getElementById("contactForm");
   const successMsg = document.getElementById("successMsg");
 
-  /* Individual input fields */
   const fields = {
     name:    document.getElementById("name"),
     email:   document.getElementById("email"),
@@ -27,9 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     message: document.getElementById("message")
   };
 
-  /* --------------------------------------------------
-     HELPER - show or clear the error state on a field group
-  -------------------------------------------------- */
   function setError(fieldName, hasError) {
     const group = document.getElementById("grp-" + fieldName);
     if (!group) return;
@@ -40,11 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /* --------------------------------------------------
-     INDIVIDUAL VALIDATORS
-     Each function validates one field and returns true/false.
-  -------------------------------------------------- */
-
   function validateName() {
     const val = fields.name.value.trim();
     const ok  = val.length >= 2;
@@ -54,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function validateEmail() {
     const val = fields.email.value.trim();
-    /* Practical email regex: requires local@domain.tld */
     const re  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const ok  = re.test(val);
     setError("email", !ok);
@@ -63,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function validatePhone() {
     const val = fields.phone.value.trim();
-    /* Digits only, between 7 and 15 characters */
     const re  = /^\d{7,15}$/;
     const ok  = re.test(val);
     setError("phone", !ok);
@@ -84,30 +58,21 @@ document.addEventListener("DOMContentLoaded", () => {
     return ok;
   }
 
-  /* --------------------------------------------------
-     REAL-TIME VALIDATION
-     Validate on blur so the user sees errors when
-     they leave a field, and clear errors as they type.
-  -------------------------------------------------- */
+  // Validate on blur, clear on input
   fields.name.addEventListener("blur",    validateName);
   fields.email.addEventListener("blur",   validateEmail);
   fields.phone.addEventListener("blur",   validatePhone);
   fields.subject.addEventListener("blur", validateSubject);
   fields.message.addEventListener("blur", validateMessage);
 
-  /* Clear the error styling as the user types into any field */
   Object.keys(fields).forEach((key) => {
     fields[key].addEventListener("input", () => setError(key, false));
   });
 
-  /* --------------------------------------------------
-     FORM SUBMIT HANDLER
-     Runs all validators; blocks submission if any fail.
-  -------------------------------------------------- */
+  // Handle form submit
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    /* Run all validators and collect results */
     const results = [
       validateName(),
       validateEmail(),
@@ -119,22 +84,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const allValid = results.every(Boolean);
 
     if (!allValid) {
-      /* Focus the first invalid field to help the user */
       const firstInvalid = form.querySelector(
         ".form-group.invalid input, .form-group.invalid textarea"
       );
       if (firstInvalid) firstInvalid.focus();
-      return; /* stop submission */
+      return;
     }
 
-    /* All fields are valid - show success message and reset form */
     successMsg.classList.add("show");
     form.reset();
 
-    /* Auto-hide the success message after 6 seconds */
     setTimeout(() => {
       successMsg.classList.remove("show");
     }, 6000);
   });
 
-}); /* end DOMContentLoaded */
+});

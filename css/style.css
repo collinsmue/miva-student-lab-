@@ -1,10 +1,5 @@
-/* =========================================================
-   Student Portfolio & Academic Management - Stylesheet
-   COS106 Web Technologies Practical Assignment
-   Mobile-first | Flexbox | Grid | CSS Variables
-   ========================================================= */
+/* styles */
 
-/* ---------- CSS Variables ---------- */
 :root {
   --primary: #1e3a8a;
   --primary-dark: #172554;
@@ -30,7 +25,6 @@
   --max-width: 1180px;
 }
 
-/* ---------- Reset ---------- */
 * {
   margin: 0;
   padding: 0;
@@ -63,7 +57,6 @@ img {
   display: block;
 }
 
-/* ---------- Layout helpers ---------- */
 .container {
   width: 92%;
   max-width: var(--max-width);
@@ -98,7 +91,6 @@ img {
   border-radius: 4px;
 }
 
-/* ---------- Header & Navigation ---------- */
 .site-header {
   position: sticky;
   top: 0;
@@ -179,7 +171,6 @@ img {
   transition: var(--transition);
 }
 
-/* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -238,7 +229,6 @@ img {
   color: var(--primary);
 }
 
-/* ---------- Hero ---------- */
 .hero {
   position: relative;
   padding: 4rem 0 3rem;
@@ -319,7 +309,6 @@ img {
   filter: blur(20px);
 }
 
-/* ---------- Skills preview ---------- */
 .skills-preview {
   display: flex;
   flex-wrap: wrap;
@@ -338,7 +327,6 @@ img {
   border: 1px solid var(--border);
 }
 
-/* ---------- Stats cards ---------- */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -373,7 +361,6 @@ img {
   margin-top: 0.3rem;
 }
 
-/* ---------- Featured project ---------- */
 .featured {
   display: grid;
   grid-template-columns: 1fr;
@@ -403,7 +390,6 @@ img {
   margin-bottom: 1rem;
 }
 
-/* ---------- Quote ---------- */
 .quote {
   text-align: center;
   padding: 3rem 1rem;
@@ -437,7 +423,6 @@ img {
   opacity: 0.85;
 }
 
-/* ---------- About page ---------- */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -462,7 +447,6 @@ img {
   margin-bottom: 0.8rem;
 }
 
-/* About profile photo */
 .about-profile-photo {
   width: 180px;
   height: 200px;
@@ -480,7 +464,6 @@ img {
   object-position: top center;
 }
 
-/* Skills progress bars */
 .skill {
   margin-bottom: 1rem;
 }
@@ -508,7 +491,6 @@ img {
   transition: width 1.2s ease;
 }
 
-/* Timeline */
 .timeline {
   position: relative;
   margin-top: 1.5rem;
@@ -550,7 +532,6 @@ img {
   font-size: 0.92rem;
 }
 
-/* Hobbies / interests lists */
 .two-col {
   display: grid;
   grid-template-columns: 1fr;
@@ -590,7 +571,6 @@ img {
   font-weight: 800;
 }
 
-/* Table */
 .table-wrap {
   overflow-x: auto;
   border-radius: var(--radius-md);
@@ -620,7 +600,6 @@ tr:hover td {
   background: #f1f5f9;
 }
 
-/* ---------- Projects page ---------- */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -678,7 +657,6 @@ tr:hover td {
   flex: 1;
 }
 
-/* Sample project badge */
 .sample-badge {
   display: inline-block;
   background: #fef3c7;
@@ -720,7 +698,6 @@ tr:hover td {
   justify-content: center;
 }
 
-/* ---------- Planner page ---------- */
 .planner-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -875,7 +852,6 @@ tr:hover td {
   margin-bottom: 0.8rem;
 }
 
-/* ---------- Contact page ---------- */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -997,7 +973,6 @@ tr:hover td {
   animation: slideIn 0.4s ease;
 }
 
-/* ---------- Footer ---------- */
 .site-footer {
   background: var(--primary-dark);
   color: #cbd5e1;
@@ -1060,7 +1035,6 @@ tr:hover td {
   transform: translateY(-2px);
 }
 
-/* ---------- Back to top button ---------- */
 .back-top {
   position: fixed;
   bottom: 24px;
@@ -1092,7 +1066,6 @@ tr:hover td {
   transform: translateY(-3px);
 }
 
-/* ---------- Animations ---------- */
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -1115,7 +1088,6 @@ tr:hover td {
   transform: translateY(0);
 }
 
-/* ---------- Media Queries ---------- */
 @media (min-width: 768px) {
   .hero-grid {
     grid-template-columns: 1.2fr 1fr;
